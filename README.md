@@ -25,7 +25,7 @@ Aplicación web que muestra tu dirección IP pública junto con información de 
 - **Framework:** React 18
 - **Build tool:** Vite
 - **Estilos:** Tailwind CSS v4
-- **API:** [ipapi.co](https://ipapi.co) (gratuito, sin API key)
+- **API:** [ipinfo.io](https://ipinfo.io) (gratuito, sin API key)
 
 ## Instalación
 
@@ -54,7 +54,7 @@ npm run preview
 ├── src/
 │   ├── App.jsx              — Componente principal
 │   ├── api/
-│   │   └── ip.js            — Llamada a la API de ipapi.co
+│   │   └── ip.js            — Llamada a la API de ipinfo.io
 │   ├── components/
 │   │   ├── Card.jsx          — Tarjeta reutilizable
 │   │   └── ErrorBanner.jsx   — Banner de error con reintentar
