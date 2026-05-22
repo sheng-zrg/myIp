@@ -1,5 +1,9 @@
-const API_URL = 'https://ipapi.co/json'
+const API_URL = 'https://ipinfo.io/json'
 const TIMEOUT_MS = 10000
+
+function detectType(ip) {
+  return ip.includes(':') ? 'IPv6' : 'IPv4'
+}
 
 async function fetchIP() {
   const controller = new AbortController()
@@ -16,16 +20,12 @@ async function fetchIP() {
 
     const data = await response.json()
 
-    if (data.error) {
-      throw new Error(data.error.reason || 'API response invalid')
-    }
-
     return {
-      ip: data.ip,
-      type: data.ipv4 || data.ipv6 ? 'IPv4' : 'IPv6',
+      ip: data.ip || 'N/A',
+      type: detectType(data.ip),
       city: data.city || 'N/A',
       region: data.region || 'N/A',
-      country: data.country_name || 'N/A',
+      country: data.country_name || data.country || 'N/A',
       isp: data.org || 'N/A',
     }
   } catch (error) {
